@@ -1,4 +1,39 @@
-console.log("I am here");
+var donationBox = document.getElementById("donation-table");
+var userName = document.getElementById("user-name");
+var userEmail = document.getElementById("user-email");
+var userDonation = document.getElementById("user-donation");
+// var donationType = document.getElementById("one-time");
+var count = 0;
+var donateButton = document.getElementById("donate-button");
+
+
+function captureDonation() {
+	var newDonation ={};
+	newDonation.id = count;
+	newDonation.name = userName.value;
+	newDonation.email = userEmail.value;
+	newDonation.amount = userDonation.value;
+
+	// newDonation.type = ????
+	Donator.addDonation(newDonation);
+	populateTable();
+	count++;
+}
+
+function populateTable() {
+	var donations = Donator.getDonation();
+		var donationString = "";
+		for ( i = 0 ; i < donations.length ; i++) {
+		var donationKey = donations[i];
+			donationString += `<tr><td>${donationKey.name}</td><td>${donationKey.email}</td>
+			<td>${donationKey.amount}</td></tr>`;
+		}
+		donationBox.innerHTML = donationString;
+
+}
+
+donateButton.addEventListener("click", captureDonation);
+
 
 // Instructions
 

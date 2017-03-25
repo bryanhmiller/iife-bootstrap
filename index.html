@@ -16,43 +16,58 @@
 
 	  <!-- Table -->
 		<table class="table">
-			<div id="donation-table"></div>
-			<tr>
-		 	   	<td>Name</td>
-		    	<td>Email</td>
-		    	<td>Amount</td>
-		    	<td>Type</td>
-		    </tr>	
+			<thead>
+				<tr>
+			 	   	<td>Name</td>
+			    	<td>Email</td>
+			    	<td>Amount</td>
+			    	<td>Type</td>
+			    </tr>
+		    </thead>	
+			<tbody id="donation-table"></tbody>
 		</table>
 	</div>
 	<div class="panel panel-default col-lg-5">
 	  	<div class="panel-body">Donate Here</div>
 	  	<div class="input-group input-group-lg">
   			<span class="input-group-addon" id="sizing-addon1">Name </span>
-  			<input type="text" class="form-control" aria-describedby="sizing-addon1">
+  			<input id="user-name" type="text" class="form-control" aria-describedby="sizing-addon1">
 		</div>
 		<br>
 	  	<div class="input-group input-group-lg">
   			<span class="input-group-addon" id="sizing-addon1">Email</span>
-  			<input type="text" class="form-control" aria-describedby="sizing-addon1">
+  			<input id="user-email" type="text" class="form-control" aria-describedby="sizing-addon1">
 		</div>
 		<br>
 		<div class="input-group input-group-lg">
   			<span class="input-group-addon">$</span>
-  			<input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+  			<input id="user-donation" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
   			<span class="input-group-addon">.00</span>
 		</div>
 		<br>
+		<div class="btn-group" data-toggle="buttons">
+		<!-- <label class="btn btn-primary active"> -->
+			<label class="btn btn-primary">
+				<input type="radio" name="options" id="donation-type" autocomplete="off"> One Time
+			</label>
+			<label class="btn btn-primary">
+				<input type="radio" name="options" autocomplete="off"> Per Lap
+			</label>
+		</div>	
+		<br>	
+		<br>
 		<div class="btn-group-lg" role="group" aria-label="...">
-		  <button type="button" class="btn btn-default">Donate</button>
-		  <button type="button" class="btn btn-default">Cancel</button>
+			<button id="donate-button" type="button" class="btn btn-default">Donate</button>
+			<button type="button" class="btn btn-default">Cancel</button>
 		</div>
+		<br>
 	</div>	
 	<script
 	  src="https://code.jquery.com/jquery-3.2.1.min.js"
 	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	  crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="javascripts/donator.js"></script>
 	<script type="text/javascript" src="javascripts/domhandler.js"></script>
 </body>
 </html>
