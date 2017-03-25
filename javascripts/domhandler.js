@@ -1,11 +1,12 @@
 var donationBox = document.getElementById("donation-table");
+var count = 0;
 var userName = document.getElementById("user-name");
 var userEmail = document.getElementById("user-email");
 var userDonation = document.getElementById("user-donation");
-// var donationType = document.getElementById("one-time");
-var count = 0;
+var oneTimeDonation = document.getElementById("single");
+var perLapDonation = document.getElementById("multiple");
 var donateButton = document.getElementById("donate-button");
-
+var clearButton = document.getElementById("cancel-button");
 
 function captureDonation() {
 	var newDonation ={};
@@ -13,26 +14,38 @@ function captureDonation() {
 	newDonation.name = userName.value;
 	newDonation.email = userEmail.value;
 	newDonation.amount = userDonation.value;
-
-	// newDonation.type = ????
+	if (oneTimeDonation.checked === true) {
+		newDonation.type = oneTimeDonation.value
+	} else if (perLapDonation.checked === true) {
+		newDonation.type = perLapDonation.value
+	}
 	Donator.addDonation(newDonation);
 	populateTable();
 	count++;
+	resetForm();
+}
+
+function resetForm() {
+	userName.value = "";
+	userEmail.value = "";
+	userDonation.value = "";
+	oneTimeDonation.checked = false;
+	perLapDonation.checked = false;
 }
 
 function populateTable() {
 	var donations = Donator.getDonation();
-		var donationString = "";
-		for ( i = 0 ; i < donations.length ; i++) {
+	var donationString = "";
+	for ( i = 0 ; i < donations.length ; i++) {
 		var donationKey = donations[i];
-			donationString += `<tr><td>${donationKey.name}</td><td>${donationKey.email}</td>
-			<td>${donationKey.amount}</td></tr>`;
-		}
-		donationBox.innerHTML = donationString;
-
+		donationString += `<tr><td>${donationKey.name}</td><td>${donationKey.email}</td>
+		<td>${donationKey.amount}</td><td>${donationKey.type}</td></tr>`;
+	}
+	donationBox.innerHTML = donationString;
 }
 
 donateButton.addEventListener("click", captureDonation);
+clearButton.addEventListener("click", resetForm);
 
 
 // Instructions
